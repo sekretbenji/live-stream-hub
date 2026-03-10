@@ -457,3 +457,56 @@ footer {
 .bulletin-grid video {
   aspect-ratio: 16 / 9;
 }
+
+/*
+ * Live wrapper styling for video + chat layout
+ * This container aligns the video player and the live chat panel side‑by‑side on
+ * large screens and stacks them vertically on small devices.  The video
+ * container retains its existing aspect‑ratio behaviour and floating logic.
+ */
+.live-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 1.5rem auto 0;
+}
+.live-wrapper .video-container {
+  flex: 2;
+}
+.live-wrapper .chat-container {
+  flex: 1;
+  height: 500px;
+  max-height: 80vh;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+.chat-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+@media (max-width: 992px) {
+  .live-wrapper {
+    flex-direction: column;
+  }
+  .live-wrapper .chat-container {
+    height: 400px;
+    max-height: none;
+  }
+}
+
+/* Announcement cards grid
+ * Uses the same responsive layout as the schedule cards but with its own
+ * class name to avoid confusion. Cards reuse the general .card style. */
+.announcement-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
