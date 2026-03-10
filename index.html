@@ -20,18 +20,13 @@
       <h1 class="logo">Alokulum National Major Seminary TV</h1>
       <nav>
         <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
           <li><a href="#live">Live</a></li>
-          <li><a href="#schedule">Schedule</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <!-- Bulletin menu item for monthly news bulletins -->
-          <li><a href="#bulletin">Bulletin</a></li>
-          <!-- New Announcements menu item for seminary announcements -->
-          <li><a href="#announcements">Announcements</a></li>
           <li><a href="#videos">Videos</a></li>
+          <li><a href="#posts">Posts</a></li>
+          <li><a href="#bulletin">Bulletin</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
-          <!-- Account link will toggle the floating login/signup panel instead of scrolling -->
           <li><a href="#account" id="account-link">Account</a></li>
         </ul>
       </nav>
@@ -42,62 +37,61 @@
   <main id="home">
     <!-- Hero section introducing the seminary and containing a responsive live video.
          When the user scrolls past this section, the video will float in the corner. -->
-    <section class="hero" id="live">
-      <div class="hero-background"></div>
-      <div class="hero-content">
-        <h2>Alokulum National Major Seminary TV</h2>
-        <p>Experience the light of the Uganda Martyrs and our community of faith and learning.</p>
-      </div>
-      <!-- Live wrapper combines the video player and live chat side‑by‑side.  On larger screens
-           the video and chat appear next to each other; on small screens they stack.  The
-           existing floating behaviour still applies to the video container. -->
-      <div class="live-wrapper">
-        <div class="video-container" id="live-video-container">
-          <iframe
-            id="live-video"
-            src="https://player.twitch.tv/?channel=benjaminexperiments&parent=sekretbenji.github.io&muted=true"
-            frameborder="0"
-            allowfullscreen
-            scrolling="no">
-          </iframe>
-        </div>
-        <!-- Embedded Twitch chat for live interaction.  The parent parameter must match
-             the domain hosting the page for Twitch to allow embedding.  The chat panel
-             will fill its container both in width and height. -->
-        <div class="chat-container">
-          <iframe
-            id="live-chat"
-            src="https://www.twitch.tv/embed/benjaminexperiments/chat?parent=sekretbenji.github.io"
-            frameborder="0"
-            scrolling="no">
-          </iframe>
+    <!-- Channel hero with banner and channel info -->
+    <section id="channel" class="channel-hero">
+      <img src="martyrs-monument.png" alt="Seminary channel banner" class="channel-banner">
+      <div class="channel-info">
+        <img src="icons/icon-512x512.png" alt="Seminary TV logo" class="channel-icon">
+        <div class="channel-details">
+          <h2>Alokulum National Major Seminary TV</h2>
+          <p>Experience the light of the Uganda Martyrs and our community of faith and learning.</p>
         </div>
       </div>
     </section>
 
+    <!-- Live section with the primary stream -->
+    <section id="live" class="live section">
+      <h2>Live</h2>
+      <div class="video-container" id="live-video-container">
+        <iframe
+          id="live-video"
+          src="https://player.twitch.tv/?channel=benjaminexperiments&parent=sekretbenji.github.io&muted=true"
+          frameborder="0"
+          allowfullscreen
+          scrolling="no">
+        </iframe>
+      </div>
+    </section>
 
-    <!-- Schedule section with upcoming events -->
-    <section id="schedule" class="schedule section">
-      <h2>Upcoming Seminary Events</h2>
-      <div class="schedule-cards">
+    <!-- Posts & Articles section -->
+    <section id="posts" class="posts section">
+      <h2>Posts &amp; Articles</h2>
+      <div class="post-cards">
         <div class="card">
-          <h3>Daily Mass &amp; Prayers</h3>
-          <p>Date: March 15, 2026</p>
-          <p>Time: 6:00&nbsp;AM EAT</p>
-          <p>Join us for Holy Mass and morning prayers streamed live from the seminary chapel.</p>
+          <h3>New Semester Intake</h3>
+          <p>Date: April 1, 2026</p>
+          <p>The seminary welcomes new entrants for the upcoming academic year. Orientation schedules and details will be shared soon.</p>
         </div>
         <div class="card">
-          <h3>Lecture Series</h3>
-          <p>Date: March 18, 2026</p>
-          <p>Time: 10:00&nbsp;AM EAT</p>
-          <p>Attend our theological lectures with professors and guest speakers.</p>
+          <h3>Ordination Anniversary</h3>
+          <p>Date: May 12, 2026</p>
+          <p>Join us in prayers and celebration as we mark the anniversary of our former rector Rt. Rev. Constantine Rupiny’s ordination as bishop.</p>
         </div>
         <div class="card">
-          <h3>Evening Devotions</h3>
-          <p>Date: March 25, 2026</p>
-          <p>Time: 7:00&nbsp;PM EAT</p>
-          <p>Reflect and meditate with us during our evening devotionals.</p>
+          <h3>Pilgrimage of Hope</h3>
+          <p>Date: June 8, 2026</p>
+          <p>Seminarians and faithful will journey to the Holy Door as pilgrims of hope. All are welcome to participate in this spiritual adventure.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Videos section showcasing recent programs -->
+    <section id="videos" class="videos section">
+      <h2>Latest Videos</h2>
+      <div class="embed-grid">
+        <iframe src="https://www.youtube.com/embed/qfczbriTA1A" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/PJSCQuWpth0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VDY6DbUS7t4" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -113,7 +107,7 @@
       <p>We’d love to hear from you. Get in touch with the Seminary TV team:</p>
       <ul>
         <li>Email: <a href="mailto:info@alokulumseminary.org">info@alokulumseminary.org</a></li>
-        <li>Phone: +256&nbsp;123&nbsp;456&nbsp;789</li>
+        <li>Phone: +256 123 456 789</li>
         <li>Address: Alokulum National Major Seminary, Gulu, Uganda</li>
       </ul>
     </section>
@@ -149,41 +143,6 @@
       </div>
     </section>
 
-    <!-- Announcements section providing important updates from the seminary. -->
-    <section id="announcements" class="announcements section">
-      <h2>Seminary Announcements</h2>
-      <p>Stay up to date with official notices, academic calendar changes and community news from
-         Alokulum National Major Seminary.  Important announcements will be posted here by
-         the seminary administration.</p>
-      <div class="announcement-cards">
-        <div class="card">
-          <h3>New Semester Intake</h3>
-          <p>Date: April 1, 2026</p>
-          <p>The seminary welcomes new entrants for the upcoming academic year. Orientation
-            schedules and details will be shared soon.</p>
-        </div>
-        <div class="card">
-          <h3>Ordination Anniversary</h3>
-          <p>Date: May 12, 2026</p>
-          <p>Join us in prayers and celebration as we mark the anniversary of our former
-            rector Rt. Rev. Constantine Rupiny’s ordination as bishop.</p>
-        </div>
-        <div class="card">
-          <h3>Pilgrimage of Hope</h3>
-          <p>Date: June 8, 2026</p>
-          <p>Seminarians and faithful will journey to the Holy Door as pilgrims of hope.  All
-            are welcome to participate in this spiritual adventure.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Recorded videos section (populated via JavaScript) -->
-    <section id="videos" class="videos section">
-      <h2>Recorded Videos</h2>
-      <!-- This message will be updated dynamically by script.js based on whether any recordings exist. -->
-      <p id="no-videos-message">No recorded videos are available at this time. Only the seminary staff can add recordings.</p>
-      <div id="recorded-videos-container" class="video-grid"></div>
-    </section>
 
 
     <!-- Account section for sign up/in -->
