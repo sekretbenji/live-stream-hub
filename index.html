@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <!-- Video.js CSS (provides styles for the video player) -->
   <link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet">
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <header>
@@ -22,6 +24,9 @@
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#upload">Upload</a></li>
+          <li><a href="#account">Account</a></li>
         </ul>
       </nav>
       <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
@@ -36,6 +41,9 @@
         <p>Watch our live events and stay connected in real time.</p>
       </div>
       <div class="video-wrapper">
+        <!-- Twitch embed for live streaming. The 'channel' parameter points to the user's Twitch channel,
+             and the 'parent' parameter must match the domain where this embed is hosted. Muted is enabled
+             by default; viewers can unmute it. -->
         <iframe
           src="https://player.twitch.tv/?channel=benjaminexperiments&parent=sekretbenji.github.io&muted=true"
           frameborder="0"
@@ -87,6 +95,47 @@
         <li>Phone: +256&nbsp;123&nbsp;456&nbsp;789</li>
       </ul>
     </section>
+
+    <!-- Recorded videos section (populated via JavaScript) -->
+    <section id="videos" class="videos section">
+      <h2>Recorded Videos</h2>
+      <p id="no-videos-message">No recordings yet. Upload a video or save a live stream to see it here.</p>
+      <div id="recorded-videos-container" class="video-grid"></div>
+    </section>
+
+    <!-- Upload section (requires authentication) -->
+    <section id="upload" class="upload section" style="display:none;">
+      <h2>Upload Video</h2>
+      <p>Select a video file to upload. Supported formats: MP4, WebM, OGG.</p>
+      <input type="file" id="video-file" accept="video/*">
+      <button id="upload-btn">Upload</button>
+      <p id="upload-message"></p>
+    </section>
+
+    <!-- Account section for sign up/in -->
+    <section id="account" class="account section">
+      <h2>Account</h2>
+      <div id="auth-forms">
+        <div id="login-form">
+          <h3>Login</h3>
+          <input type="text" id="login-username" placeholder="Username">
+          <input type="password" id="login-password" placeholder="Password">
+          <button id="login-btn">Login</button>
+          <p id="login-message"></p>
+        </div>
+        <div id="signup-form">
+          <h3>Sign Up</h3>
+          <input type="text" id="signup-username" placeholder="Username">
+          <input type="password" id="signup-password" placeholder="Password">
+          <button id="signup-btn">Sign Up</button>
+          <p id="signup-message"></p>
+        </div>
+        <div id="logout-section" style="display:none;">
+          <p>Welcome, <span id="username-display"></span>!</p>
+          <button id="logout-btn">Logout</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -97,5 +146,16 @@
   <script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
   <!-- Custom script -->
   <script src="script.js"></script>
+
+  <!-- Register the service worker for PWA functionality -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(err => {
+          console.error('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
