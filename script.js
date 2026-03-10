@@ -87,6 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
    * instruct them to log in or create an account.
    */
   function loadRecordedVideos() {
+    // Skip loading if the recorded videos section is not present on the page.
+    if (!recordedVideosContainer || !noVideosMessage) return;
     const currentUser = localStorage.getItem('currentUser');
     // Clear container each time to avoid duplicates
     recordedVideosContainer.innerHTML = '';
@@ -207,7 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
    * effect similar to video players on popular streaming sites.
    */
   const liveVideoContainer = document.getElementById('live-video-container');
-  const heroSectionElement = document.getElementById('live');
+  // Identify the channel hero section (formerly the live hero) for floating video logic.
+  const heroSectionElement = document.getElementById('channel');
   function handleFloatingVideo() {
     if (!liveVideoContainer || !heroSectionElement) return;
     const rect = heroSectionElement.getBoundingClientRect();
