@@ -57,6 +57,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const videosSection = document.getElementById('videos');
   const navElement = document.querySelector('nav');
 
+  // Reference to the account section (floating panel) and its toggle link
+  const accountSection = document.getElementById('account');
+  const accountLink = document.getElementById('account-link');
+
+  // Toggle visibility of the floating account panel when clicking the Account link in the nav.
+  if (accountLink) {
+    accountLink.addEventListener('click', (e) => {
+      // Prevent default anchor navigation (which would attempt to scroll)
+      e.preventDefault();
+      // Toggle the "visible" class on the account section
+      accountSection.classList.toggle('visible');
+    });
+  }
+
   /*
    * Load recorded videos for the currently logged‑in user.  Each user
    * has their own list of uploaded or recorded videos stored under
@@ -105,6 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
       logoutSection.style.display = 'block';
       usernameDisplay.textContent = currentUser;
       uploadSection.style.display = 'block';
+      // Hide the account panel after login to avoid covering content
+      if (accountSection) {
+        accountSection.classList.remove('visible');
+      }
     } else {
       // Guest: show sign in/up forms and hide upload
       loginFormDiv.style.display = 'block';
@@ -112,6 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
       logoutSection.style.display = 'none';
       usernameDisplay.textContent = '';
       uploadSection.style.display = 'none';
+      // Ensure the account panel remains open when guests toggle it
     }
     // Always load videos (per-user or empty) and show recorded videos to everyone
     loadRecordedVideos();

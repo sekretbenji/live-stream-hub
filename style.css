@@ -350,6 +350,41 @@ footer {
   margin-bottom: 0.8rem;
 }
 
+/* Floating account panel styles
+ * The account section is rendered as a floating card in the top‑right
+ * corner of the viewport. It is hidden by default and can be toggled
+ * via the Account link in the navigation bar. When visible, it
+ * overlays the page content without affecting the layout.
+ */
+.account {
+  position: fixed;
+  top: calc(var(--header-height) + 1rem);
+  right: 1rem;
+  width: 300px;
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  padding: 1rem;
+  z-index: 2000;
+  display: none;
+}
+
+.account.visible {
+  display: block;
+}
+
+/* For small screens, expand the panel to near full width and shift
+ * downward so it doesn’t cover the header. */
+@media (max-width: 768px) {
+  .account {
+    top: calc(var(--header-height) + 0.5rem);
+    right: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    max-width: calc(100% - 1rem);
+  }
+}
+
 /* Recorded videos grid */
 .video-grid {
   display: grid;
