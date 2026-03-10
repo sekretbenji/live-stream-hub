@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Stream Hub</title>
+  <title>Alokulum National Major Seminary TV</title>
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
   <!-- Google Fonts -->
@@ -17,16 +17,16 @@
 <body>
   <header>
     <div class="container">
-      <h1 class="logo">Live Stream Hub</h1>
+      <h1 class="logo">Alokulum National Major Seminary TV</h1>
       <nav>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
+          <li><a href="#live">Live</a></li>
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#videos">Videos</a></li>
-          <li><a href="#upload">Upload</a></li>
+          <li><a href="#contact">Contact</a></li>
           <li><a href="#account">Account</a></li>
         </ul>
       </nav>
@@ -35,74 +35,74 @@
   </header>
 
   <main id="home">
-    <!-- Hero section with a short introduction and the embedded video player -->
-    <section class="hero">
+    <!-- Hero section introducing the seminary and containing a responsive live video.
+         When the user scrolls past this section, the video will float in the corner. -->
+    <section class="hero" id="live">
+      <div class="hero-background"></div>
       <div class="hero-content">
-        <h2>Experience Live Streaming</h2>
-        <p>Watch our live events and stay connected in real time.</p>
+        <h2>Alokulum National Major Seminary TV</h2>
+        <p>Experience the light of the Uganda Martyrs and our community of faith and learning.</p>
       </div>
-      <div class="video-wrapper">
-        <!-- Twitch embed for live streaming. The 'channel' parameter points to the user's Twitch channel,
-             and the 'parent' parameter must match the domain where this embed is hosted. Muted is enabled
-             by default; viewers can unmute it. -->
+      <div class="video-container" id="live-video-container">
         <iframe
+          id="live-video"
           src="https://player.twitch.tv/?channel=benjaminexperiments&parent=sekretbenji.github.io&muted=true"
           frameborder="0"
           allowfullscreen
-          scrolling="no"
-          height="480"
-          width="100%">
+          scrolling="no">
         </iframe>
       </div>
     </section>
 
     <!-- Schedule section with upcoming events -->
     <section id="schedule" class="schedule section">
-      <h2>Upcoming Live Events</h2>
+      <h2>Upcoming Seminary Events</h2>
       <div class="schedule-cards">
         <div class="card">
-          <h3>Weekly Tech Talk</h3>
+          <h3>Daily Mass &amp; Prayers</h3>
           <p>Date: March 15, 2026</p>
-          <p>Time: 7:00&nbsp;PM EAT</p>
-          <p>Join our experts as they discuss the latest in technology.</p>
+          <p>Time: 6:00&nbsp;AM EAT</p>
+          <p>Join us for Holy Mass and morning prayers streamed live from the seminary chapel.</p>
         </div>
         <div class="card">
-          <h3>Music Night Live</h3>
+          <h3>Lecture Series</h3>
           <p>Date: March 18, 2026</p>
-          <p>Time: 8:00&nbsp;PM EAT</p>
-          <p>Live performances from your favorite artists.</p>
+          <p>Time: 10:00&nbsp;AM EAT</p>
+          <p>Attend our theological lectures with professors and guest speakers.</p>
         </div>
         <div class="card">
-          <h3>Cooking with Chefs</h3>
+          <h3>Evening Devotions</h3>
           <p>Date: March 25, 2026</p>
-          <p>Time: 5:00&nbsp;PM EAT</p>
-          <p>Cook along with professional chefs from around the world.</p>
+          <p>Time: 7:00&nbsp;PM EAT</p>
+          <p>Reflect and meditate with us during our evening devotionals.</p>
         </div>
       </div>
     </section>
 
     <!-- About section describing the purpose of the platform -->
     <section id="about" class="about section">
-      <h2>About Us</h2>
-      <p>Live Stream Hub is your go‑to platform for streaming live events. Whether it’s educational talks, concerts or cook‑alongs, we bring you high‑quality live video experiences. Our platform is designed with low latency and adaptive streaming to ensure smooth playback for every viewer. Stay tuned for more events!</p>
+      <h2>About the Seminary</h2>
+      <p>Alokulum National Major Seminary trains future priests with a deep devotion to the Uganda Martyrs. Our mission is to form men of faith, intellect and character who will serve the Church and our communities. Through our online TV channel, we invite you to take part in our liturgies, lectures and community life from anywhere in the world.</p>
     </section>
 
     <!-- Contact section with contact information -->
     <section id="contact" class="contact section">
-      <h2>Contact Us</h2>
-      <p>Have questions or want to host your own live event? Reach out to us:</p>
+      <h2>Contact &amp; Support</h2>
+      <p>We’d love to hear from you. Get in touch with the Seminary TV team:</p>
       <ul>
-        <li>Email: <a href="mailto:info@livestreamhub.com">info@livestreamhub.com</a></li>
+        <li>Email: <a href="mailto:info@alokulumseminary.org">info@alokulumseminary.org</a></li>
         <li>Phone: +256&nbsp;123&nbsp;456&nbsp;789</li>
+        <li>Address: Alokulum National Major Seminary, Gulu, Uganda</li>
       </ul>
     </section>
 
     <!-- Gallery section to showcase images -->
     <section id="gallery" class="gallery section">
-      <h2>Gallery</h2>
+      <h2>Gallery &amp; Martyrs</h2>
       <div class="gallery-grid">
-        <img src="assets/hero-image.png" alt="Live streaming performance">
-        <img src="assets/stream-concept.png" alt="Abstract streaming concept">
+        <img src="assets/uganda-martyrs.jpg" alt="Namugongo Martyrs Shrine">
+        <img src="assets/hero-image.png" alt="Seminary community in worship">
+        <img src="assets/stream-concept.png" alt="Light and faith concept art">
       </div>
     </section>
 
@@ -149,7 +149,7 @@
   </main>
 
   <footer>
-    <p>&copy;&nbsp;2026 Live Stream Hub. All rights reserved.</p>
+    <p>&copy;&nbsp;2026 Alokulum National Major Seminary TV. All rights reserved.</p>
   </footer>
 
   <!-- Video.js JS library -->

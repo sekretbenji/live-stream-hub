@@ -99,26 +99,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateAuthUI() {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
-      // Show logged‑in interface
+      // User logged in: show account welcome and enable upload
       loginFormDiv.style.display = 'none';
       signupFormDiv.style.display = 'none';
       logoutSection.style.display = 'block';
       usernameDisplay.textContent = currentUser;
-      // Show upload section when logged in
       uploadSection.style.display = 'block';
-      // Load user‑specific videos
-      loadRecordedVideos();
     } else {
-      // Show authentication forms for guests
+      // Guest: show sign in/up forms and hide upload
       loginFormDiv.style.display = 'block';
       signupFormDiv.style.display = 'block';
       logoutSection.style.display = 'none';
       usernameDisplay.textContent = '';
-      // Hide upload section when not logged in
       uploadSection.style.display = 'none';
-      // Load an empty or guest view of recorded videos
-      loadRecordedVideos();
     }
+    // Always load videos (per-user or empty) and show recorded videos to everyone
+    loadRecordedVideos();
   }
   updateAuthUI();
 
@@ -205,4 +201,27 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     reader.readAsDataURL(file);
   });
+
+  /*
+   * Floating live video logic
+   * When the user scrolls beyond the hero section, the live video
+   * container will shrink and dock to the bottom right corner of the
+   * viewport. When the hero section is visible, the video returns to
+   * its original size and position. This provides a picture‑in‑picture
+   * effect similar to video players on popular streaming sites.
+   */
+  const liveVideoContainer = document.getElementById('live-video-container');
+  const heroSectionElement = document.getElementById('live');
+  function handleFloatingVideo() {
+    if (!liveVideoContainer || !heroSectionElement) return;
+    const rect = heroSectionElement.getBoundingClientRect();
+    if (rect.bottom <= 0) {
+      liveVideoContainer.classList.add('floating');
+    } else {
+      liveVideoContainer.classList.remove('floating');
+    }
+  }
+  // Run on scroll and on page load in case the page is opened scrolled down
+  window.addEventListener('scroll', handleFloatingVideo);
+  handleFloatingVideo();
 });

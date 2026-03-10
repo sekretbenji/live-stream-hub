@@ -8,16 +8,17 @@
 
 :root {
   /*
-   * Custom colour palette for the dark theme.
-   * The primary and secondary colours remain vibrant so that
-   * buttons and highlights stand out against the black background.
+   * Light theme colour palette inspired by the seminary adoption flyer.
+   * These colours create a bright, welcoming atmosphere that reflects
+   * the spirit of hope and devotion of the Uganda Martyrs.
    */
-  --primary-color: #4f46e5;     /* rich indigo for headlines and highlights */
-  --secondary-color: #ec4899;   /* vivid magenta accent */
-  --background-color: #000000;  /* pure black page background */
-  --surface-color: #111111;     /* dark grey surfaces for cards and sections */
-  --text-color: #f5f5f5;        /* off‑white text for high contrast */
-  --header-background: #090909; /* slightly lighter black for header/footer */
+  --primary-color: #379765;      /* green representing growth and faith */
+  --secondary-color: #e12626;    /* red accent recalling the martyrs’ sacrifice */
+  --accent-color: #fac91c;       /* golden highlight evoking light and hope */
+  --background-color: #f9f9f9;   /* very light grey page background */
+  --surface-color: #ffffff;      /* white surfaces for cards and sections */
+  --text-color: #333333;         /* dark grey text for readability */
+  --header-background: #ffffff;  /* white header/footer */
   --header-height: 60px;
 }
 
@@ -47,7 +48,7 @@ header {
   width: 100%;
   height: var(--header-height);
   background-color: var(--header-background);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 100;
 }
 
@@ -101,9 +102,59 @@ nav a:hover {
   padding-top: calc(var(--header-height) + 2rem);
   padding-bottom: 3rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  color: #ffffff;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: var(--text-color);
   position: relative;
+}
+
+/* Background image overlay for the hero section. This layer adds a subtle
+   photographic texture behind the gradient and text without overpowering
+   the content. */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/uganda-martyrs.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.25;
+  filter: brightness(0.9);
+  z-index: -1;
+}
+
+/* Responsive video container. This wrapper maintains a 16:9 aspect ratio
+   for the embedded Twitch iframe. When the page is scrolled past the
+   hero section, the "floating" class will convert this container into a
+   small fixed window pinned to the bottom right of the viewport. */
+.video-container {
+  width: 80%;
+  max-width: 900px;
+  margin: 2rem auto;
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.video-container.floating {
+  position: fixed;
+  width: 320px;
+  height: 180px;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  padding-top: 0;
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1000;
 }
 
 .hero-content h2 {
@@ -168,13 +219,13 @@ nav a:hover {
   background-color: var(--surface-color);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .card h3 {
@@ -211,7 +262,7 @@ footer {
   text-align: center;
   padding: 1.5rem 0;
   background-color: var(--header-background);
-  border-top: 1px solid #1f1f1f;
+  border-top: 1px solid #e0e0e0;
   color: var(--text-color);
   font-size: 0.9rem;
 }
@@ -225,8 +276,8 @@ footer {
     width: 220px;
     flex-direction: column;
     background-color: var(--header-background);
-    border: 1px solid #1f1f1f;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     display: none;
   }
   nav ul.active {
@@ -234,7 +285,7 @@ footer {
   }
   nav li {
     margin: 0;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid #e0e0e0;
   }
   nav li:last-child {
     border-bottom: none;
@@ -263,13 +314,13 @@ footer {
 
 /* Account and upload forms */
 .account input,
-.upload input {
+ .upload input {
   width: 100%;
   padding: 0.7rem;
   margin-bottom: 0.8rem;
-  border: 1px solid #333;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: #222;
+  background-color: #f5f5f5;
   color: var(--text-color);
 }
 
@@ -311,7 +362,7 @@ footer {
 .video-grid video {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Gallery grid styling */
@@ -326,6 +377,6 @@ footer {
 .gallery-grid img {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   object-fit: cover;
 }

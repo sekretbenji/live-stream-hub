@@ -1,11 +1,11 @@
 {
-  "name": "Live Stream Hub",
-  "short_name": "StreamHub",
-  "description": "A hub for live streaming events and replays.",
+  "name": "Alokulum National Major Seminary TV",
+  "short_name": "Seminary TV",
+  "description": "Watch live liturgies, lectures and community events from Alokulum National Major Seminary.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
+  "theme_color": "#379765",
   "icons": [
     {
       "src": "icons/icon-512x512.png",
