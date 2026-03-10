@@ -11,14 +11,13 @@ const ASSETS_TO_CACHE = [
   '/manifest.json',
   '/icons/icon-512x512.png',
   // Newly added assets for the gallery and bulletin
-  '/assets/cathedral.jpg',
-  '/assets/ordination.jpg',
-  '/assets/adoption.jpg',
-  '/assets/uganda-martyrs.jpg',
-  '/assets/hero-image.png',
-  '/assets/stream-concept.png',
-  '/assets/martyrs-monument.png',
-  '/assets/pilgrimage.mp4'
+  '/cathedral.jpg',
+  '/ordination.jpg',
+  '/adoption.jpg',
+  '/uganda-martyrs.jpg',
+  '/stream-concept.png',
+  '/martyrs-monument.png',
+  '/pilgrimage.mp4'
 ];
 
 self.addEventListener('install', event => {
