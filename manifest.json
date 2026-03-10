@@ -1,0 +1,16 @@
+{
+  "name": "Live Stream Hub",
+  "short_name": "StreamHub",
+  "description": "A hub for live streaming events and replays.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

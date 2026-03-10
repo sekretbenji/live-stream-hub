@@ -104,34 +104,20 @@ document.addEventListener('DOMContentLoaded', () => {
       signupFormDiv.style.display = 'none';
       logoutSection.style.display = 'block';
       usernameDisplay.textContent = currentUser;
+      // Show upload section when logged in
       uploadSection.style.display = 'block';
-      // Reveal site sections and navigation
-      if (heroSection) heroSection.style.display = '';
-      if (scheduleSection) scheduleSection.style.display = '';
-      if (aboutSection) aboutSection.style.display = '';
-      if (contactSection) contactSection.style.display = '';
-      if (videosSection) videosSection.style.display = '';
-      if (navElement) navElement.style.display = '';
       // Load user‑specific videos
       loadRecordedVideos();
     } else {
-      // Show authentication forms and hide site content for guests
+      // Show authentication forms for guests
       loginFormDiv.style.display = 'block';
       signupFormDiv.style.display = 'block';
       logoutSection.style.display = 'none';
       usernameDisplay.textContent = '';
+      // Hide upload section when not logged in
       uploadSection.style.display = 'none';
-      // Hide site sections and navigation
-      if (heroSection) heroSection.style.display = 'none';
-      if (scheduleSection) scheduleSection.style.display = 'none';
-      if (aboutSection) aboutSection.style.display = 'none';
-      if (contactSection) contactSection.style.display = 'none';
-      if (videosSection) videosSection.style.display = 'none';
-      if (navElement) navElement.style.display = 'none';
-      // Clear any recorded videos displayed and reset message
-      recordedVideosContainer.innerHTML = '';
-      noVideosMessage.textContent = 'Please log in to view your recorded videos.';
-      noVideosMessage.style.display = 'block';
+      // Load an empty or guest view of recorded videos
+      loadRecordedVideos();
     }
   }
   updateAuthUI();
