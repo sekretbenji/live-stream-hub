@@ -18,7 +18,7 @@
   <header>
     <div class="container">
       <h1 class="logo">Live Stream Hub</h1>
-      <nav>
+      <nav style="display:none;">
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#schedule">Schedule</a></li>
@@ -35,7 +35,7 @@
 
   <main id="home">
     <!-- Hero section with a short introduction and the embedded video player -->
-    <section class="hero">
+    <section class="hero" style="display:none;">
       <div class="hero-content">
         <h2>Experience Live Streaming</h2>
         <p>Watch our live events and stay connected in real time.</p>
@@ -56,7 +56,7 @@
     </section>
 
     <!-- Schedule section with upcoming events -->
-    <section id="schedule" class="schedule section">
+    <section id="schedule" class="schedule section" style="display:none;">
       <h2>Upcoming Live Events</h2>
       <div class="schedule-cards">
         <div class="card">
@@ -81,13 +81,13 @@
     </section>
 
     <!-- About section describing the purpose of the platform -->
-    <section id="about" class="about section">
+    <section id="about" class="about section" style="display:none;">
       <h2>About Us</h2>
       <p>Live Stream Hub is your go‑to platform for streaming live events. Whether it’s educational talks, concerts or cook‑alongs, we bring you high‑quality live video experiences. Our platform is designed with low latency and adaptive streaming to ensure smooth playback for every viewer. Stay tuned for more events!</p>
     </section>
 
     <!-- Contact section with contact information -->
-    <section id="contact" class="contact section">
+    <section id="contact" class="contact section" style="display:none;">
       <h2>Contact Us</h2>
       <p>Have questions or want to host your own live event? Reach out to us:</p>
       <ul>
@@ -97,7 +97,7 @@
     </section>
 
     <!-- Recorded videos section (populated via JavaScript) -->
-    <section id="videos" class="videos section">
+    <section id="videos" class="videos section" style="display:none;">
       <h2>Recorded Videos</h2>
       <p id="no-videos-message">No recordings yet. Upload a video or save a live stream to see it here.</p>
       <div id="recorded-videos-container" class="video-grid"></div>

@@ -45,11 +45,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const recordedVideosContainer = document.getElementById('recorded-videos-container');
   const noVideosMessage = document.getElementById('no-videos-message');
 
-  // Load recorded videos from localStorage and render them
+  // References to core site sections for access control.  When a user is
+  // not logged in, these sections will be hidden so that the platform
+  // requires authentication before viewing content.  Once logged in,
+  // they are displayed again.  Additional sections can be added here if
+  // new content areas are introduced.
+  const heroSection = document.querySelector('.hero');
+  const scheduleSection = document.getElementById('schedule');
+  const aboutSection = document.getElementById('about');
+  const contactSection = document.getElementById('contact');
+  const videosSection = document.getElementById('videos');
+  const navElement = document.querySelector('nav');
+
+  /*
+   * Load recorded videos for the currently logged‑in user.  Each user
+   * has their own list of uploaded or recorded videos stored under
+   * the key `recordedVideos_USERNAME` in localStorage.  When no
+   * videos exist for the user, a message is shown.  If the user is
+   * not logged in, no videos will be shown and the message will
+   * instruct them to log in or create an account.
+   */
   function loadRecordedVideos() {
-    const recorded = JSON.parse(localStorage.getItem('recordedVideos') || '[]');
+    const currentUser = localStorage.getItem('currentUser');
+    // Clear container each time to avoid duplicates
     recordedVideosContainer.innerHTML = '';
+    if (!currentUser) {
+      noVideosMessage.textContent = 'Please log in to view your recorded videos.';
+      noVideosMessage.style.display = 'block';
+      return;
+    }
+    const key = `recordedVideos_${currentUser}`;
+    const recorded = JSON.parse(localStorage.getItem(key) || '[]');
     if (recorded.length === 0) {
+      noVideosMessage.textContent = 'No recordings yet. Upload a video or save a live stream to see it here.';
       noVideosMessage.style.display = 'block';
     } else {
       noVideosMessage.style.display = 'none';
@@ -62,23 +90,48 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-  loadRecordedVideos();
+  // Initial loading of recorded videos will happen when the UI is updated.
 
-  // Update the UI based on login state
+  // Update the UI based on login state.  When no user is logged in, all
+  // content sections are hidden and only the authentication forms are
+  // displayed.  After login, the site sections are revealed and the
+  // recorded videos for that user are loaded.
   function updateAuthUI() {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
+      // Show logged‑in interface
       loginFormDiv.style.display = 'none';
       signupFormDiv.style.display = 'none';
       logoutSection.style.display = 'block';
       usernameDisplay.textContent = currentUser;
       uploadSection.style.display = 'block';
+      // Reveal site sections and navigation
+      if (heroSection) heroSection.style.display = '';
+      if (scheduleSection) scheduleSection.style.display = '';
+      if (aboutSection) aboutSection.style.display = '';
+      if (contactSection) contactSection.style.display = '';
+      if (videosSection) videosSection.style.display = '';
+      if (navElement) navElement.style.display = '';
+      // Load user‑specific videos
+      loadRecordedVideos();
     } else {
+      // Show authentication forms and hide site content for guests
       loginFormDiv.style.display = 'block';
       signupFormDiv.style.display = 'block';
       logoutSection.style.display = 'none';
       usernameDisplay.textContent = '';
       uploadSection.style.display = 'none';
+      // Hide site sections and navigation
+      if (heroSection) heroSection.style.display = 'none';
+      if (scheduleSection) scheduleSection.style.display = 'none';
+      if (aboutSection) aboutSection.style.display = 'none';
+      if (contactSection) contactSection.style.display = 'none';
+      if (videosSection) videosSection.style.display = 'none';
+      if (navElement) navElement.style.display = 'none';
+      // Clear any recorded videos displayed and reset message
+      recordedVideosContainer.innerHTML = '';
+      noVideosMessage.textContent = 'Please log in to view your recorded videos.';
+      noVideosMessage.style.display = 'block';
     }
   }
   updateAuthUI();
@@ -135,7 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
   });
 
-  // Upload handler
+  // Upload handler.  When uploading a video, it is stored under the
+  // current user’s key so that each account maintains its own list
+  // of videos.  Guests cannot upload videos.
   uploadBtn.addEventListener('click', () => {
     uploadMessage.textContent = '';
     const currentUser = localStorage.getItem('currentUser');
@@ -151,9 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const reader = new FileReader();
     reader.onload = function (e) {
       const dataUrl = e.target.result;
-      const recorded = JSON.parse(localStorage.getItem('recordedVideos') || '[]');
+      const key = `recordedVideos_${currentUser}`;
+      const recorded = JSON.parse(localStorage.getItem(key) || '[]');
       recorded.push({ name: file.name, dataUrl });
-      localStorage.setItem('recordedVideos', JSON.stringify(recorded));
+      localStorage.setItem(key, JSON.stringify(recorded));
       uploadInput.value = '';
       uploadMessage.textContent = 'Video uploaded successfully.';
       loadRecordedVideos();
