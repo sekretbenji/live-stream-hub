@@ -25,8 +25,8 @@
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <!-- New events menu item to showcase upcoming seminary event videos -->
-          <li><a href="#events">Events</a></li>
+          <!-- Bulletin menu item for monthly news bulletins -->
+          <li><a href="#bulletin">Bulletin</a></li>
           <li><a href="#videos">Videos</a></li>
           <li><a href="#contact">Contact</a></li>
           <!-- Account link will toggle the floating login/signup panel instead of scrolling -->
@@ -57,32 +57,6 @@
       </div>
     </section>
 
-    <!-- Events section showcasing upcoming live streams and past event videos -->
-    <section id="events" class="events section">
-      <h2>Upcoming &amp; Featured Events</h2>
-      <p>Catch our latest events and special broadcasts from Alokulum National Major Seminary.</p>
-      <div class="embed-grid">
-        <!-- Embed YouTube videos using the video IDs. The ID is the part after v= or the last path segment of the URL. -->
-        <iframe
-          src="https://www.youtube.com/embed/qfczbriTA1A"
-          title="Upcoming Event 1"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        <iframe
-          src="https://www.youtube.com/embed/PJSCQuWpth0"
-          title="Upcoming Event 2"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-        <iframe
-          src="https://www.youtube.com/embed/VDY6DbUS7t4"
-          title="Upcoming Event 3"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen></iframe>
-      </div>
-    </section>
 
     <!-- Schedule section with upcoming events -->
     <section id="schedule" class="schedule section">
@@ -128,11 +102,32 @@
 
     <!-- Gallery section to showcase images -->
     <section id="gallery" class="gallery section">
-      <h2>Gallery &amp; Martyrs</h2>
+      <h2>Gallery</h2>
       <div class="gallery-grid">
-        <img src="assets/uganda-martyrs.jpg" alt="Namugongo Martyrs Shrine">
-        <img src="assets/hero-image.png" alt="Seminary community in worship">
-        <img src="assets/stream-concept.png" alt="Light and faith concept art">
+        <!-- Seminarians at Gulu Cathedral -->
+        <img src="assets/cathedral.jpg" alt="Seminary community at cathedral">
+        <!-- Bishop ordination ceremony -->
+        <img src="assets/ordination.jpg" alt="Ordination ceremony">
+        <!-- Adoption Day flyer -->
+        <img src="assets/adoption.jpg" alt="Adoption Day 2026 flyer">
+        <!-- Uganda Martyrs pilgrimage (Namugongo shrine) -->
+        <img src="assets/uganda-martyrs.jpg" alt="Martyrs shrine">
+      </div>
+    </section>
+
+    <!-- Bulletin section showcasing monthly news updates and multimedia. -->
+    <section id="bulletin" class="bulletin section">
+      <h2>Monthly Bulletin</h2>
+      <p>Stay informed with our latest news, reflections and multimedia updates from the seminary community.</p>
+      <div class="bulletin-grid">
+        <!-- Pilgrimage video: Seminarians make a pilgrimage to the holy door. -->
+        <video controls>
+          <source src="assets/pilgrimage.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <!-- Adoption Day graphic as part of the bulletin highlights. -->
+        <img src="assets/adoption.jpg" alt="Adoption Day news bulletin">
+        <!-- Additional bulletin items can be added here in the future. -->
       </div>
     </section>
 

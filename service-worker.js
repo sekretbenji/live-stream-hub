@@ -1,13 +1,24 @@
 // Simple service worker for offline caching of static assets.
 
-const CACHE_NAME = 'live-stream-hub-v1';
+// Bump the cache version whenever assets change to ensure updated files are
+// fetched and cached.  Version 2 adds new gallery and bulletin assets.
+const CACHE_NAME = 'live-stream-hub-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/style.css',
   '/script.js',
   '/manifest.json',
-  '/icons/icon-512x512.png'
+  '/icons/icon-512x512.png',
+  // Newly added assets for the gallery and bulletin
+  '/assets/cathedral.jpg',
+  '/assets/ordination.jpg',
+  '/assets/adoption.jpg',
+  '/assets/uganda-martyrs.jpg',
+  '/assets/hero-image.png',
+  '/assets/stream-concept.png',
+  '/assets/martyrs-monument.png',
+  '/assets/pilgrimage.mp4'
 ];
 
 self.addEventListener('install', event => {
