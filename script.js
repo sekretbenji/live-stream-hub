@@ -37,10 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const logoutBtn = document.getElementById('logout-btn');
 
-  const uploadSection = document.getElementById('upload');
-  const uploadInput = document.getElementById('video-file');
-  const uploadBtn = document.getElementById('upload-btn');
-  const uploadMessage = document.getElementById('upload-message');
+  // Upload elements are intentionally undefined because regular
+  // visitors are not permitted to upload. The platform is now
+  // consumption‑only; only administrators (via future backend) will
+  // manage uploads.  These variables remain undefined to prevent
+  // accidental usage.  If an upload section ever exists in the DOM
+  // (for example on an admin dashboard), the corresponding elements
+  // can be queried here.
+  const uploadSection = null;
+  const uploadInput = null;
+  const uploadBtn = null;
+  const uploadMessage = null;
 
   const recordedVideosContainer = document.getElementById('recorded-videos-container');
   const noVideosMessage = document.getElementById('no-videos-message');
@@ -83,15 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentUser = localStorage.getItem('currentUser');
     // Clear container each time to avoid duplicates
     recordedVideosContainer.innerHTML = '';
-    if (!currentUser) {
-      noVideosMessage.textContent = 'Please log in to view your recorded videos.';
-      noVideosMessage.style.display = 'block';
-      return;
-    }
-    const key = `recordedVideos_${currentUser}`;
-    const recorded = JSON.parse(localStorage.getItem(key) || '[]');
+    // This site is consumption‑only; recorded videos are not tied to
+    // individual user accounts.  We still support playback of any
+    // previously stored videos (e.g., added by administrators via
+    // localStorage).  Videos are stored in a single array under the
+    // key `recordedVideos_all`.  If there are no recordings, a
+    // message is shown to inform visitors.
+    const recorded = JSON.parse(localStorage.getItem('recordedVideos_all') || '[]');
     if (recorded.length === 0) {
-      noVideosMessage.textContent = 'No recordings yet. Upload a video or save a live stream to see it here.';
+      noVideosMessage.textContent = 'No recorded videos are available at this time. Only the seminary staff can add recordings.';
       noVideosMessage.style.display = 'block';
     } else {
       noVideosMessage.style.display = 'none';
@@ -113,26 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateAuthUI() {
     const currentUser = localStorage.getItem('currentUser');
     if (currentUser) {
-      // User logged in: show account welcome and enable upload
+      // User logged in: display welcome and hide forms
       loginFormDiv.style.display = 'none';
       signupFormDiv.style.display = 'none';
       logoutSection.style.display = 'block';
       usernameDisplay.textContent = currentUser;
-      uploadSection.style.display = 'block';
-      // Hide the account panel after login to avoid covering content
+      // When logged in, close the account panel so it does not overlap the page
       if (accountSection) {
         accountSection.classList.remove('visible');
       }
     } else {
-      // Guest: show sign in/up forms and hide upload
+      // Guest: show sign in/up forms and hide welcome
       loginFormDiv.style.display = 'block';
       signupFormDiv.style.display = 'block';
       logoutSection.style.display = 'none';
       usernameDisplay.textContent = '';
-      uploadSection.style.display = 'none';
-      // Ensure the account panel remains open when guests toggle it
     }
-    // Always load videos (per-user or empty) and show recorded videos to everyone
+    // Load recordings (if any) for all users
     loadRecordedVideos();
   }
   updateAuthUI();
@@ -189,37 +193,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateAuthUI();
   });
 
-  // Upload handler.  When uploading a video, it is stored under the
-  // current user’s key so that each account maintains its own list
-  // of videos.  Guests cannot upload videos.
-  uploadBtn.addEventListener('click', () => {
-    uploadMessage.textContent = '';
-    const currentUser = localStorage.getItem('currentUser');
-    if (!currentUser) {
-      uploadMessage.textContent = 'You must be logged in to upload videos.';
-      return;
-    }
-    const file = uploadInput.files[0];
-    if (!file) {
-      uploadMessage.textContent = 'Please choose a video file.';
-      return;
-    }
-    const reader = new FileReader();
-    reader.onload = function (e) {
-      const dataUrl = e.target.result;
-      const key = `recordedVideos_${currentUser}`;
-      const recorded = JSON.parse(localStorage.getItem(key) || '[]');
-      recorded.push({ name: file.name, dataUrl });
-      localStorage.setItem(key, JSON.stringify(recorded));
-      uploadInput.value = '';
-      uploadMessage.textContent = 'Video uploaded successfully.';
-      loadRecordedVideos();
-    };
-    reader.onerror = function () {
-      uploadMessage.textContent = 'Error reading the video file.';
-    };
-    reader.readAsDataURL(file);
-  });
+  // The upload handler has been removed because public uploading is
+  // disabled.  If you wish to re-enable uploads for administrators in
+  // the future, implement the logic here and ensure that uploads are
+  // properly authenticated and stored in a secure backend.
 
   /*
    * Floating live video logic

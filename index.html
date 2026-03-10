@@ -25,6 +25,8 @@
           <li><a href="#schedule">Schedule</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#gallery">Gallery</a></li>
+          <!-- New events menu item to showcase upcoming seminary event videos -->
+          <li><a href="#events">Events</a></li>
           <li><a href="#videos">Videos</a></li>
           <li><a href="#contact">Contact</a></li>
           <!-- Account link will toggle the floating login/signup panel instead of scrolling -->
@@ -52,6 +54,33 @@
           allowfullscreen
           scrolling="no">
         </iframe>
+      </div>
+    </section>
+
+    <!-- Events section showcasing upcoming live streams and past event videos -->
+    <section id="events" class="events section">
+      <h2>Upcoming &amp; Featured Events</h2>
+      <p>Catch our latest events and special broadcasts from Alokulum National Major Seminary.</p>
+      <div class="embed-grid">
+        <!-- Embed YouTube videos using the video IDs. The ID is the part after v= or the last path segment of the URL. -->
+        <iframe
+          src="https://www.youtube.com/embed/qfczbriTA1A"
+          title="Upcoming Event 1"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <iframe
+          src="https://www.youtube.com/embed/PJSCQuWpth0"
+          title="Upcoming Event 2"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
+        <iframe
+          src="https://www.youtube.com/embed/VDY6DbUS7t4"
+          title="Upcoming Event 3"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
     </section>
 
@@ -110,18 +139,11 @@
     <!-- Recorded videos section (populated via JavaScript) -->
     <section id="videos" class="videos section">
       <h2>Recorded Videos</h2>
-      <p id="no-videos-message">No recordings yet. Upload a video or save a live stream to see it here.</p>
+      <!-- This message will be updated dynamically by script.js based on whether any recordings exist. -->
+      <p id="no-videos-message">No recorded videos are available at this time. Only the seminary staff can add recordings.</p>
       <div id="recorded-videos-container" class="video-grid"></div>
     </section>
 
-    <!-- Upload section (requires authentication) -->
-    <section id="upload" class="upload section" style="display:none;">
-      <h2>Upload Video</h2>
-      <p>Select a video file to upload. Supported formats: MP4, WebM, OGG.</p>
-      <input type="file" id="video-file" accept="video/*">
-      <button id="upload-btn">Upload</button>
-      <p id="upload-message"></p>
-    </section>
 
     <!-- Account section for sign up/in -->
     <section id="account" class="account section">
